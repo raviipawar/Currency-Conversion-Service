@@ -26,4 +26,9 @@ spring:
       password: 12345
       
   application:
-    name: currency-conversion-service
+    name: currency-conversion
+    
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

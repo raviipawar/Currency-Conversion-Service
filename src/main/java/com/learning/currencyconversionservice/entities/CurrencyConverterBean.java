@@ -34,4 +34,5 @@ public class CurrencyConverterBean {
 	private BigDecimal quantity;
 	@Column(name = "calculateAmount")
 	private BigDecimal calculatedAmount;
+	private int port;
 }

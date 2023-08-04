@@ -5,6 +5,7 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,9 @@ import com.learning.currencyconversionservice.service.CurrencyConversionService;
 
 @RestController
 public class CurrencyConversionController {
+	
+	@Autowired
+	private Environment environment;
 
 	@Autowired
 	private CurrencyConversionService currencyConversionService;
@@ -40,6 +44,6 @@ public class CurrencyConversionController {
 
 		CurrencyConverterBean response = proxy.retrieveExchangeValue(from, to);
 		return new CurrencyConverterBean(response.getId(), from, to, response.getConversionMultiple(), quantity,
-				quantity.multiply(response.getConversionMultiple()));
+				quantity.multiply(response.getConversionMultiple()), Integer.parseInt(environment.getProperty("local.server.port")));
 	}
 }
