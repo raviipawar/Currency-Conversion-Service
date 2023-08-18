@@ -10,7 +10,7 @@ import com.learning.currencyconversionservice.entities.CurrencyConverterBean;
 @FeignClient(name = "currency-exchange")
 public interface CurrencyExchangeServiceProxy {
 
-	@GetMapping(value= "/currency-exchange/from/{from}/to/{to}")
+	@GetMapping(value= "/currency-exchanges/from/{from}/to/{to}")
 	public CurrencyConverterBean retrieveExchangeValue(@PathVariable String from, @PathVariable String to);
 
 }

@@ -9,5 +9,6 @@ import com.learning.currencyconversionservice.entities.CurrencyConverterBean;
 public interface CurrencyConversionRepo extends JpaRepository<CurrencyConverterBean, String> {
 
 	CurrencyConverterBean findByFromAndToAndQuantity(String from, String to, BigDecimal quantity);
+	
 
 }
