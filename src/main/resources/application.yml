@@ -16,9 +16,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
         
-  h2:
-    console:
-      enabled: true
+
       
   security:
     user:
@@ -27,3 +25,24 @@ spring:
       
   application:
     name: currency-conversion-service
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+                
+resilience4j.retry:
+    instances:
+        sample-api:
+            maxAttempts: 5
+            waitDuration: 2s
+            enable-exponential-backoff: true
+        
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name}, %X{traceId:-},%X{spanId:-}]"
